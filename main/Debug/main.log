@@ -1,0 +1,17 @@
+﻿  Algorithms.cpp
+  main.cpp
+c:\users\crist\source\repos\sortingalgorithms\main\main.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+main.obj : error LNK2005: "public: __thiscall Algorithms::Algorithms(void)" (??0Algorithms@@QAE@XZ) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: __thiscall Algorithms::~Algorithms(void)" (??1Algorithms@@QAE@XZ) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::heapDown(int * const,int,int)" (?heapDown@Algorithms@@QAEXQAHHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::heapSort(int * const,int)" (?heapSort@Algorithms@@QAEXQAHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::insertionSort(int *,int)" (?insertionSort@Algorithms@@QAEXPAHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::merge(int *,int,int,int,int)" (?merge@Algorithms@@QAEXPAHHHHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::mergeSort(int *,int,int)" (?mergeSort@Algorithms@@QAEXPAHHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: int __thiscall Algorithms::partition(int *,int,int)" (?partition@Algorithms@@QAEHPAHHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::printArr(int * const,int)" (?printArr@Algorithms@@QAEXQAHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::quickSort(int *,int,int)" (?quickSort@Algorithms@@QAEXPAHHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::selectionSort(int *,int)" (?selectionSort@Algorithms@@QAEXPAHH@Z) already defined in Algorithms.obj
+main.obj : error LNK2005: "public: void __thiscall Algorithms::swap(int &,int &)" (?swap@Algorithms@@QAEXAAH0@Z) already defined in Algorithms.obj
+C:\Users\crist\source\repos\sortingAlgorithms\Debug\main.exe : fatal error LNK1169: one or more multiply defined symbols found
