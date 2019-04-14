@@ -16,8 +16,14 @@ Algorithms::~Algorithms()
 {
 }
 
-void Algorithms::swap(int
-	&bigger, int &smaller) {
+
+/**
+	Swaps items in Arrays
+
+	@param biggger array item and smaller array item
+	@return void function
+*/
+void Algorithms::swap(int& bigger, int &smaller) {
 
 
 	int temp = bigger;
@@ -25,10 +31,16 @@ void Algorithms::swap(int
 	smaller = temp;
 }
 
+/**
+	Selection sort Algorithm
+
+	@param pointer to the array and the size
+	@return void function
+*/
 void Algorithms::selectionSort(int *arr, int size) {
 
-  comparisons = 0;
-	swaps = 0;
+	COMPARISONS = 0;
+	SWAPS = 0;
 
 	for (int i = 0; i < size - 1; i++)
 	{
@@ -38,19 +50,27 @@ void Algorithms::selectionSort(int *arr, int size) {
 		{
 			if (arr[j] < arr[smallest]) {
 				smallest = j;
-				comparisons++;
+				COMPARISONS++;
 			}
 		}
 		swap(arr[smallest], arr[i]);
-		swaps++;
+
+		SWAPS++;
 	}
-	cout << "\n";
-	cout << "COMPARISONS for Selection Sort: " << comparisons << " , SWAPS for Selection Sort: " << swaps << endl;
+
+	cout << "COMPARISONS for Selection Sort: " << COMPARISONS << " , SWAPS for Selection Sort: " << SWAPS << endl;
 }
 
+/**
+	Insertion sort Algorithm
 
+	@param pointer to the array and the size
+	@return void function
+*/
 void Algorithms::insertionSort(int *arr, int size) {
 
+	COMPARISONS = 0;
+	SWAPS = 0;
 
 	bool less;
 	int j = 0;
@@ -67,7 +87,7 @@ void Algorithms::insertionSort(int *arr, int size) {
 
 				swap(arr[j - 1], arr[j]);
 				j--;
-				swaps++;
+				SWAPS++;
 
 			}
 			else
@@ -75,14 +95,21 @@ void Algorithms::insertionSort(int *arr, int size) {
 
 				less = false;
 			}
-			comparisons++;
+			COMPARISONS++;
 		}
 
 	}
-	cout << "COMPARISONS for Insertion Sort: " << comparisons << " , SWAPS for Insertion Sort: " << swaps << endl;
+	cout << "COMPARISONS for Insertion Sort: " << COMPARISONS << " , SWAPS for Insertion Sort: " << SWAPS << endl;
+
 }
 
-void Algorithms::merge(int *arr, int low, int mid, int mid2, int high) {
+/**
+	Merge Sort helper function that combines arrays
+
+	@param pointer to the array and the size
+	@return void function
+*/
+void Algorithms::merge(int *arr, int low, int mid, int mid2, int high, int& countComparisons, int& countSwaps) {
 
 	int *temp = new int[high + 1];
 	int i = low;
@@ -90,21 +117,22 @@ void Algorithms::merge(int *arr, int low, int mid, int mid2, int high) {
 	int a = 0;
 
 
+
 	while (i <= mid && j <= high)
 	{
-		comparisons++;
+		countComparisons++;
 		if (arr[i] < arr[j])
 		{
-			comparisons++;
-			swaps++;
+			countComparisons++;
+			countSwaps++;
 
 			temp[a] = arr[i];
 			i++;
 		}
 		else
 		{
-			comparisons++;
-			swaps++;
+			countComparisons++;
+			countSwaps++;
 			temp[a] = arr[j];
 			j++;
 		}
@@ -112,16 +140,16 @@ void Algorithms::merge(int *arr, int low, int mid, int mid2, int high) {
 	}
 	while (i <= mid) {
 
-		comparisons++;
-		swaps++;
+		countComparisons++;
+		countSwaps++;
 
 		temp[a] = arr[i];
 		i++;
 		a++;
 	}
 	while (j <= high) {
-		comparisons++;
-		swaps++;
+		countComparisons++;
+		countSwaps++;
 
 		temp[a] = arr[j];
 		j++;
@@ -135,87 +163,115 @@ void Algorithms::merge(int *arr, int low, int mid, int mid2, int high) {
 
 }
 
-void Algorithms::mergeSort(int *arr, int low, int high) {
-	comparisons = 0;
-	swaps = 0;
+/**
+	Merge Sort recursive function Algorithm that halves the arrays
+
+	@param pointer to the array and the size
+	@return void function
+*/
+void Algorithms::mergeSort(int *arr, int low, int high, int& countComparisons, int& countSwaps) {
+
 
 	if (low < high)
 	{
-		comparisons++;
+		countComparisons++;
 		int mid = (low + high - 1) / 2;
-		mergeSort(arr, low, mid);
-		mergeSort(arr, mid + 1, high);
-		merge(arr, low, mid, mid + 1, high);
+		mergeSort(arr, low, mid, countComparisons, countSwaps);
+		mergeSort(arr, mid + 1, high, countComparisons, countSwaps);
+		merge(arr, low, mid, mid + 1, high, countComparisons, countSwaps);
 
 	}
-	else
-	{
-		cout << "comparisons for merge sort: " << comparisons << " , swaps for merge sort: " << swaps << endl;
-	}
+
 
 }
+/**
+	Quick Sort function that combines arrays and figures out the middle partition to divide them.
 
-void Algorithms::quickSort(int *arr, int low, int high) {
+	@param pointer to the array and the size
+	@return void function
+*/
+void Algorithms::quickSort(int *arr, int low, int high, int& countComparisons, int& countSwaps) {
 
-	comparisons = 0;
-	swaps = 0;
+
 
 	if (low < high)
 	{
-		int pi = partition(arr, low, high);
-		quickSort(arr, low, pi - 1);
-		quickSort(arr, pi + 1, high);
+		int pi = partition(arr, low, high, countComparisons, countSwaps);
+		quickSort(arr, low, pi - 1, countComparisons, countSwaps);
+		quickSort(arr, pi + 1, high, countComparisons, countSwaps);
 
-	
+
+	}
+
 }
-}
+/**
+	Quick Sort helper function that partitions arrays
 
-int Algorithms::partition(int *arr, int low, int high) {
+	@param pointer to the array, low index of array, high index or array, comparisons by reference and swaps by reference.
+	@return partition value where both arrays should be halved.
+*/
+int Algorithms::partition(int *arr, int low, int high, int& countComparisons, int& countSwaps) {
 
-	
+
 
 	int pivot = arr[high];
 	int pos = low - 1;
 
-	for (int i = low; i <=	high - 1; i++)
+	for (int i = low; i <= high - 1; i++)
 	{
 		if (arr[i] <= pivot)
 		{
 			pos++;
-			swaps++;
+			SWAPS++;
 			swap(arr[pos], arr[i]);
 
 		}
-		comparisons++;
+		countComparisons++;
 	}
 
 	swap(arr[pos + 1], arr[high]);
-	swaps++;
-	return (pos + 1);
-}
+	countSwaps++;
 
-void Algorithms::heapSort(int arr[], int size) {
-	//create heap, rearrange array
+	return (pos + 1);
+
+}
+/**
+	Heap sort recursive function that creates the unorganized Heap and organizes it.
+
+	@param pointer to the array, size of array,  comparisons by reference and swaps by reference.
+	@return void function.
+*/
+void Algorithms::heapSort(int *arr, int size, int& countComparisons, int& countSwaps) {
+
+	countComparisons = 0;
+	countSwaps = 0;
+
+	//create heap unordered heap
 	for (int i = size / 2 - 1; i >= 0; i--)
 	{
-		heapDown(arr, size, i);
+		heapDown(arr, size, i, countComparisons, countSwaps);
 	}
 
+
+	//Change largest item with the smallest and remove largest from tree
 	for (int i = size - 1; i >= 0; i--)
 	{
 		swap(arr[0], arr[i]);
-
-		heapDown(arr, i, 0);
+		countSwaps++;
+		heapDown(arr, i, 0, countComparisons, countSwaps);
 	}
 
-	cout << "SWAPS = " << swaps << "COMPARISONS = " << comparisons;
-
 }
+/**
+	Heap sort recursive function similar to heapsort but it assumes part of the array is sorted
 
-void Algorithms::heapDown(int arr[], int size, int root) {
+	@param pointer to the array, size of array, root of the heap, comparisons by reference and swaps by reference variables.
+	@return void function.
+*/
 
-	comparisons = 0;
-	swaps = 0;
+void Algorithms::heapDown(int *arr, int size, int root, int& countComparisons, int& countSwaps) {
+
+
 
 	int left = (2 * root) + 1;
 	int right = (2 * root) + 2;
@@ -223,25 +279,29 @@ void Algorithms::heapDown(int arr[], int size, int root) {
 
 	if (left <  size && arr[left] > arr[largest]) {
 
-		comparisons++;
+		countComparisons++;
 		largest = left;
-	
-		
+
+
 	}
 	if (right < size  &&  arr[right]> arr[largest]) {
-		comparisons++;
+		countComparisons++;
 		largest = right;
 	}
 
-		if (largest != root) {
-			comparisons++;
-			swaps++;
-			swap(arr[root], arr[largest]);
-			heapDown(arr, size, largest);
-		}
+	if (largest != root) {
+		countComparisons++;
+		countSwaps++;
 
+		//Swaps first and last node
+		swap(arr[root], arr[largest]);
 
+		//Creates a max heap on reduced array
+		heapDown(arr, size, largest, countComparisons, countSwaps);
 	}
+
+
+}
 
 void Algorithms::printArr(int arr[], int size) {
 
