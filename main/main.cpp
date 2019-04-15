@@ -180,8 +180,8 @@ int main()
 		cout << "COMPARISONS for Quick Sort: " << COMPARISONS << " , SWAPS for  Quick Sort: " << SWAPS << endl;
 		fileArray << endl;
 
-
-		obj.quickSort(bArray, 0, size - 1, COMPARISONS, SWAPS);
+		
+		obj.quickSort(bArray, 0, size - 1, COMPARISONS=0, SWAPS=0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << bArray[i] << " ";
@@ -190,7 +190,7 @@ int main()
 		fileArray << endl;
 
 
-		obj.quickSort(cArray, 0, size - 1, COMPARISONS, SWAPS);
+		obj.quickSort(cArray, 0, size - 1, COMPARISONS = 0, SWAPS = 0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << cArray[i] << " ";
@@ -198,7 +198,7 @@ int main()
 		cout << "COMPARISONS for Quick Sort: " << COMPARISONS << " , SWAPS for  Quick Sort: " << SWAPS << endl;
 		fileArray << endl;
 
-		obj.quickSort(dArray, 0, size - 1, COMPARISONS, SWAPS);
+		obj.quickSort(dArray, 0, size - 1, COMPARISONS = 0, SWAPS = 0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << dArray[i] << " ";
@@ -210,7 +210,7 @@ int main()
 
 		fileArray << "Merge Sort: " << endl;
 
-		obj.mergeSort(aArray, 0, size, COMPARISONS, SWAPS);
+		obj.mergeSort(aArray, 0, size, COMPARISONS=0, SWAPS=0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << aArray[i] << " ";
@@ -219,7 +219,7 @@ int main()
 		fileArray << endl;
 
 
-		obj.mergeSort(bArray, 0, size, COMPARISONS, SWAPS);
+		obj.mergeSort(bArray, 0, size, COMPARISONS=0, SWAPS=0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << bArray[i] << " ";
@@ -227,7 +227,7 @@ int main()
 		cout << "COMPARISONS for Merge Sort: " << COMPARISONS << " , SWAPS for  Merge Sort: " << SWAPS << endl;
 		fileArray << endl;
 
-		obj.mergeSort(cArray, 0, size, COMPARISONS, SWAPS);
+		obj.mergeSort(cArray, 0, size, COMPARISONS=0, SWAPS=0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << cArray[i] << " ";
@@ -235,7 +235,7 @@ int main()
 		cout << "COMPARISONS for Merge Sort: " << COMPARISONS << " , SWAPS for  Merge Sort: " << SWAPS << endl;
 		fileArray << endl;
 
-		obj.mergeSort(dArray, 0, size, COMPARISONS, SWAPS);
+		obj.mergeSort(dArray, 0, size, COMPARISONS=0, SWAPS=0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << dArray[i] << " ";
@@ -246,7 +246,7 @@ int main()
 	case 5:
 		fileArray << "Heap Sort: " << endl;
 
-		obj.heapSort(aArray, size, COMPARISONS, SWAPS);
+		obj.heapSort(aArray, size, COMPARISONS=0, SWAPS=0);
 
 		for (int i = 0; i < size; i++)
 		{
@@ -255,7 +255,7 @@ int main()
 		cout << "COMPARISONS for Heap Sort: " << COMPARISONS << " , SWAPS for Heap Sort: " << SWAPS << endl;
 		fileArray << endl;
 
-		obj.heapSort(bArray, size, COMPARISONS, SWAPS);
+		obj.heapSort(bArray, size, COMPARISONS=0, SWAPS=0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << bArray[i] << " ";
@@ -263,7 +263,7 @@ int main()
 		cout << "COMPARISONS for Heap Sort: " << COMPARISONS << " , SWAPS for Heap Sort: " << SWAPS << endl;
 		fileArray << endl;
 
-		obj.heapSort(cArray, size, COMPARISONS, SWAPS);
+		obj.heapSort(cArray, size, COMPARISONS=0, SWAPS=0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << cArray[i] << " ";
@@ -271,7 +271,7 @@ int main()
 		cout << "COMPARISONS for Heap Sort: " << COMPARISONS << " , SWAPS for Heap Sort: " << SWAPS << endl;
 		fileArray << endl;
 
-		obj.heapSort(dArray, size, COMPARISONS, SWAPS);;
+		obj.heapSort(dArray, size, COMPARISONS=0, SWAPS=0);
 		for (int i = 0; i < size; i++)
 		{
 			fileArray << dArray[i] << " ";

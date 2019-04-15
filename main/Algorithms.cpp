@@ -88,6 +88,7 @@ void Algorithms::insertionSort(int *arr, int size) {
 				swap(arr[j - 1], arr[j]);
 				j--;
 				SWAPS++;
+				COMPARISONS++;
 
 			}
 			else
@@ -192,7 +193,7 @@ void Algorithms::mergeSort(int *arr, int low, int high, int& countComparisons, i
 */
 void Algorithms::quickSort(int *arr, int low, int high, int& countComparisons, int& countSwaps) {
 
-
+	
 
 	if (low < high)
 	{
